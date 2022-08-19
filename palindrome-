@@ -1,0 +1,32 @@
+#設定一個函數 可輸入一段文字
+def convertInputspring():
+    rawinput = input('\nPlease Enter a word, pharse , or a sentence to check :')
+    rawstring = rawinput.lower()
+    rawList = list(rawstring)
+    return rawList
+
+#設定一函式來解決無意義之符號
+def stripAnalphabetics(unsortedList):
+    Analphabetics = ['','.','-','_',',',';',':','[',']','(',')']
+    for character in unsortedList:
+        if character in Analphabetics:
+            unsortedList.remove(character)#此句重要
+    return unsortedList  
+
+#設定一函數，來確認此文義是否為回文(palindrome)
+def runPalindromeCheck(straightInput):
+    reversedList = straightInput[::-1]
+    if reversedList == straightInput:
+        return' The text you have entered is palindrome! ' 
+    else:
+        return' The text you have entered is not a palindrome :( '
+
+#結合所有函數
+def main():
+    print('\nPalindrome checker')
+    oringinalList = convertInputspring()
+    oringinalList = stripAnalphabetics(oringinalList)
+    palindromeCheck = runPalindromeCheck(oringinalList)
+    print(palindromeCheck)
+
+main()
